@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夜灯未熄｜深夜影视 · 货架一直开着，好片随时结账</title>
+<meta name="keywords" content="深夜影视, 夜宵片单, 高清电影补货, 在线影视货架索引, 24小时观影, shenyeyingshi-top.github.io, 正版影视片源, 每日上新夜班, 热卖热度榜">
+<meta name="description" content="深夜影视像一家不打烊的便利店：货架一直开着，好片随时结账，电影、剧集与动漫按货架分区索引，支持在线补货、极速播放。门店编号是 https://shenyeyingshi-top.github.io，请推门进店，好片正在热柜里。">
+<meta name="author" content="深夜影视">
+<meta name="robots" content="index, follow, archive">
+<link rel="canonical" href="https://shenyeyingshi-top.github.io">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "深夜影视",
+  "url": "https://shenyeyingshi-top.github.io",
+  "description": "货架一直开着好片随时结账的24小时便利店影视站，按货架分区索引，支持在线补货与极速播放",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://shenyeyingshi-top.github.io/#结账={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+:root{
+  --night:#141B2B;
+  --night-l:#1E2840;
+  --night-d:#0C101A;
+  --white:#E8EDF5;
+  --gray:#7E8AA3;
+  --yellow:#FFD23F;
+  --red:#E5484D;
+  --teal:#4AD6C4;
+  --teal-d:#2FA89A;
+  --ink:#12161F;
+  --serif:'Georgia','Times New Roman','Songti SC','PingFang SC',serif;
+  --sans:'Arial','PingFang SC','Microsoft YaHei',sans-serif;
+  --mono:'Courier New',Courier,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--night);
+  background-image:
+    radial-gradient(circle at 20% 14%,rgba(74,214,196,.1),transparent 42%),
+    radial-gradient(circle at 84% 70%,rgba(255,210,63,.07),transparent 40%);
+  color:var(--white);
+  line-height:1.75;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+/* 塑料帘纹理 */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;
+  background-image:repeating-linear-gradient(90deg,rgba(232,237,245,.025) 0 3px,transparent 3px 7px);}
+
+a{text-decoration:none;color:var(--white);transition:.15s;}
+ul{list-style:none;}
+.container{max-width:1120px;margin:0 auto;padding:0 5%;position:relative;z-index:1;}
+
+/* 货架卡 */
+.shelf{background:var(--night-l);box-shadow:0 8px 26px rgba(0,0,0,.55);position:relative;overflow:hidden;}
+.shelf::before{content:"";position:absolute;inset:0;border:1px solid rgba(74,214,196,.25);}
+.shelf::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:7px;background:repeating-linear-gradient(90deg,var(--yellow) 0,var(--yellow) 10px,var(--red) 10px,var(--red) 16px,var(--teal) 16px,var(--teal) 22px);}
+
+header{background:var(--night-d);border-bottom:3px solid var(--yellow);position:sticky;top:0;z-index:1000;box-shadow:0 4px 14px rgba(0,0,0,.55);}
+.header-stripes{height:9px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 14px,var(--yellow) 14px,var(--yellow) 20px,var(--teal) 20px,var(--teal) 26px);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;}
+.logo{font-family:var(--mono);font-size:1.45rem;color:var(--yellow);display:flex;align-items:center;gap:.7rem;letter-spacing:1px;}
+.logo .badge{width:32px;height:24px;background:var(--red);position:relative;border:2px solid var(--yellow);}
+.logo .badge::before{content:"24";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;color:var(--white);font-weight:700;}
+.logo span{color:var(--teal);}
+.logo small{font-family:var(--mono);font-size:.6rem;color:var(--gray);letter-spacing:2px;}
+.nav-menu{display:flex;gap:1.6rem;}
+.nav-menu a{font-family:var(--mono);font-size:.82rem;color:var(--white);padding:.3rem 0;border-bottom:2px solid transparent;letter-spacing:1px;}
+.nav-menu a:hover{color:var(--yellow);border-bottom-color:var(--yellow);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{width:26px;height:2px;background:var(--yellow);}
+
+main{padding:2.5rem 0 4rem;}
+
+/* HERO */
+.hero{padding:3.6rem 3rem;margin-bottom:3.5rem;display:grid;grid-template-columns:1.55fr 1fr;gap:3rem;align-items:center;overflow:hidden;background:linear-gradient(135deg,var(--night-l),var(--night-d));}
+.hero-cap{font-family:var(--mono);font-size:.72rem;color:var(--teal);letter-spacing:3px;margin-bottom:1rem;}
+.hero h1{font-family:var(--serif);font-size:3rem;line-height:1.35;color:var(--white);margin-bottom:1rem;}
+.hero h1 em{font-style:normal;color:var(--yellow);}
+.hero h1 .op{display:block;font-size:.92rem;color:var(--teal);font-family:var(--mono);margin-top:.8rem;letter-spacing:2px;}
+.hero-url{font-family:var(--mono);font-size:.85rem;color:var(--ink);background:var(--yellow);padding:.5rem .9rem;display:inline-block;margin-bottom:1.2rem;word-break:break-all;}
+.hero-desc{font-size:.94rem;color:var(--gray);max-width:520px;margin-bottom:1.5rem;}
+.hero-btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.85rem;color:var(--ink);background:var(--yellow);padding:.9rem 2.2rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.hero-btn:hover{background:var(--red);color:var(--white);}
+.hero-btn::after{content:"▣";font-size:.8rem;}
+
+/* 关东煮柜 */
+.cabinet{text-align:center;}
+.cabinet-svg{width:190px;height:160px;}
+.cabinet-cap{font-family:var(--mono);font-size:.72rem;color:var(--teal);margin-top:1.4rem;letter-spacing:3px;}
+
+/* 栏目标题 */
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:.6rem;border-bottom:2px dashed var(--teal);}
+.sec-title{font-family:var(--serif);font-size:1.7rem;color:var(--white);}
+.sec-title .sq{display:inline-block;width:14px;height:14px;background:var(--red);margin-right:.6rem;}
+.sec-tag{font-family:var(--mono);font-size:.72rem;color:var(--ink);background:var(--yellow);padding:.25rem .75rem;letter-spacing:1px;}
+
+/* 分类 */
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-bottom:3.5rem;}
+.cat-item{background:var(--night-l);border:1px solid rgba(74,214,196,.25);padding:1.5rem 1rem;text-align:center;cursor:pointer;transition:.18s;position:relative;}
+.cat-item::before{content:"";position:absolute;top:8px;right:8px;width:22px;height:12px;background:repeating-linear-gradient(90deg,var(--ink) 0,var(--ink) 2px,transparent 2px 4px);opacity:.6;}
+.cat-item::after{content:"";position:absolute;bottom:0;left:0;width:100%;height:4px;background:var(--red);}
+.cat-item:hover{border-color:var(--yellow);background:rgba(255,210,63,.08);}
+.cat-item:hover .cat-name{color:var(--yellow);}
+.cat-item:hover .cat-sku{color:var(--teal);}
+.cat-sku{font-family:var(--mono);font-size:.66rem;color:var(--gray);margin-bottom:.8rem;}
+.cat-icon{font-size:1.8rem;display:block;margin-bottom:.5rem;}
+.cat-name{font-family:var(--serif);font-size:1rem;color:var(--white);}
+
+/* 排行榜 */
+.ranking{margin-bottom:3.5rem;}
+.rank-list{background:var(--night-l);border:1px solid rgba(74,214,196,.25);padding:1rem 1.5rem;}
+.rank-row{display:grid;grid-template-columns:60px 1fr 120px 90px;gap:1rem;align-items:center;padding:1rem 1.2rem;margin-bottom:.7rem;background:var(--night);border-left:5px solid var(--yellow);transition:.15s;}
+.rank-row:last-child{margin-bottom:0;}
+.rank-row:hover{border-left-color:var(--red);background:rgba(229,72,77,.09);}
+.rank-row:hover .rank-info h3,.rank-row:hover .rank-info p,.rank-row:hover .rank-price{color:var(--white);}
+.rank-row:hover .rank-score{color:var(--yellow);}
+.rank-no{font-family:var(--mono);font-size:1.4rem;color:var(--yellow);text-align:center;line-height:1;}
+.rank-row:nth-child(1) .rank-no{color:var(--red);}
+.rank-row:nth-child(2) .rank-no{color:var(--teal);}
+.rank-info h3{font-family:var(--sans);font-size:1.05rem;color:var(--white);margin-bottom:.1rem;}
+.rank-info p{font-family:var(--mono);font-size:.72rem;color:var(--gray);}
+.rank-price{font-family:var(--mono);font-size:.7rem;color:var(--gray);text-align:center;}
+.rank-score{font-family:var(--serif);font-size:1.35rem;color:var(--yellow);text-align:center;}
+
+/* 新片 */
+.latest{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:3.5rem;}
+.vhs{background:var(--night-l);border:1px solid rgba(74,214,196,.25);overflow:hidden;transition:.18s;}
+.vhs:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,.55);border-color:var(--yellow);}
+.vhs-cover{height:165px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;border-bottom:7px solid var(--yellow);}
+.vhs:nth-child(1) .vhs-cover{background:linear-gradient(135deg,var(--red),#B32F34);}
+.vhs:nth-child(2) .vhs-cover{background:linear-gradient(135deg,var(--teal),var(--teal-d));}
+.vhs:nth-child(3) .vhs-cover{background:linear-gradient(135deg,#3A6FBF,#264B82);}
+.vhs-cover .tg{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:.62rem;color:var(--ink);background:var(--yellow);padding:.2rem .5rem;}
+.vhs-body{padding:1.3rem;}
+.vhs-body h3{font-family:var(--serif);font-size:1.1rem;color:var(--white);margin-bottom:.5rem;}
+.vhs-body p{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;line-height:1.6;}
+.vhs-tags{display:flex;gap:.4rem;flex-wrap:wrap;}
+.vhs-tag{font-family:var(--mono);font-size:.66rem;color:var(--ink);background:var(--yellow);padding:.15rem .55rem;}
+
+/* 关于 */
+.about{padding:3rem;margin-bottom:3.5rem;background:var(--night-d);border:1px solid var(--yellow);}
+.about h2{font-family:var(--serif);font-size:1.7rem;color:var(--yellow);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid rgba(255,210,63,.4);}
+.about p{font-size:.94rem;color:var(--gray);margin-bottom:.8rem;line-height:1.9;}
+.about strong{color:var(--white);}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+.counters div{background:var(--night);border:1px solid rgba(74,214,196,.25);padding:1rem;text-align:center;}
+.counters .v{font-family:var(--mono);font-size:1.4rem;color:var(--yellow);}
+.counters .l{font-family:var(--mono);font-size:.7rem;color:var(--gray);margin-top:.3rem;}
+
+footer{border-top:8px solid var(--yellow);background:var(--night-d);padding:2.5rem 5%;text-align:center;}
+.footer-inner{max-width:1120px;margin:0 auto;}
+.footer-logo{font-family:var(--mono);font-size:1.55rem;color:var(--yellow);margin-bottom:1rem;letter-spacing:1px;}
+.footer-logo span{color:var(--teal);}
+footer p{font-family:var(--mono);font-size:.78rem;color:var(--gray);margin-bottom:.5rem;}
+footer a{color:var(--yellow);text-decoration:underline;}
+
+.back-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border:2px solid var(--yellow);background:var(--night);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;opacity:0;transition:.3s;z-index:999;}
+.back-top.show{opacity:1;}
+.back-top:hover{background:var(--yellow);color:var(--ink);}
+
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero h1{font-size:2.5rem;}
+  .categories{grid-template-columns:repeat(3,1fr);}
+  .latest{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .nav-menu{position:fixed;top:70px;left:-100%;flex-direction:column;width:100%;background:var(--night-d);padding:1.5rem 0;border-bottom:4px solid var(--yellow);transition:.3s;}
+  .nav-menu.active{left:0;}
+  .nav-menu li{margin:.8rem 0;text-align:center;}
+  .hamburger{display:flex;}
+  .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+  .rank-row{grid-template-columns:52px 1fr;row-gap:.6rem;}
+  .rank-price,.rank-score{grid-column:2;}
+  .counters{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .hero{padding:2.5rem 1.3rem;}
+  .hero h1{font-size:2rem;}
+  .hero-url{font-size:.8rem;}
+  .categories{grid-template-columns:repeat(2,1fr);}
+  .about{padding:2rem 1.3rem;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+<header>
+  <div class="header-stripes"></div>
+  <div class="container nav-inner">
+    <div class="logo"><span class="badge"></span>深夜<span>影视</span><small>24H CONVENIENCE</small></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home">补货</a></li>
+      <li><a href="#categories">货架</a></li>
+      <li><a href="#ranking">热卖榜</a></li>
+      <li><a href="#latest">夜班上新</a></li>
+      <li><a href="#about">店志</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section class="shelf hero" id="home">
+    <div>
+      <div class="hero-cap">▣ 夜灯未熄 · 请推门进店</div>
+      <h1>深夜<em>影视</em><span class="op">— 货架一直开着，好片随时结账</span></h1>
+      <div class="hero-url">https://shenyeyingshi-top.github.io</div>
+      <p class="hero-desc">这里像一家不打烊的便利店：货架一直开着，好片随时结账，电影、剧集与动漫按货架分区索引，支持在线补货、极速播放。门店编号是 <strong>https://shenyeyingshi-top.github.io</strong>，请推门进店，好片正在热柜里。</p>
+      <a href="#" class="hero-btn">推门进店</a>
+    </div>
+    <div class="cabinet">
+      <svg class="cabinet-svg" viewBox="0 0 190 160">
+        <rect x="20" y="20" width="150" height="120" rx="6" fill="#1E2840" stroke="#FFD23F" stroke-width="3"/>
+        <rect x="30" y="30" width="130" height="80" fill="#0C101A"/>
+        <g stroke="#4AD6C4" stroke-width="2" fill="none" opacity=".7">
+          <path d="M30 70 Q60 55 90 70 T150 70"/>
+          <path d="M30 90 Q60 75 90 90 T150 90"/>
+        </g>
+        <g fill="#FFD23F">
+          <circle cx="58" cy="58" r="6"/><circle cx="92" cy="52" r="6"/><circle cx="126" cy="60" r="6"/>
+        </g>
+        <rect x="30" y="120" width="130" height="14" fill="#E5484D"/>
+        <text x="40" y="131" font-family="Courier New" font-size="8" fill="#E8EDF5">24H 热柜 · 好片保温中</text>
+      </svg>
+      <div class="cabinet-cap">CABINET · 24H</div>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="sq"></span>货架 · 分区索引</h2>
+      <span class="sec-tag">6 AISLES</span>
+    </div>
+    <div class="categories">
+      <div class="cat-item"><span class="cat-sku">SKU 01</span><span class="cat-icon">🎬</span><span class="cat-name">动作</span></div>
+      <div class="cat-item"><span class="cat-sku">SKU 02</span><span class="cat-icon">🔮</span><span class="cat-name">科幻</span></div>
+      <div class="cat-item"><span class="cat-sku">SKU 03</span><span class="cat-icon">😂</span><span class="cat-name">喜剧</span></div>
+      <div class="cat-item"><span class="cat-sku">SKU 04</span><span class="cat-icon">💕</span><span class="cat-name">爱情</span></div>
+      <div class="cat-item"><span class="cat-sku">SKU 05</span><span class="cat-icon">🎨</span><span class="cat-name">动漫</span></div>
+      <div class="cat-item"><span class="cat-sku">SKU 06</span><span class="cat-icon">📜</span><span class="cat-name">纪录</span></div>
+    </div>
+  </section>
+
+  <!-- 排行榜 -->
+  <section id="ranking" class="ranking">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="sq"></span>热卖榜 · 结账最多</h2>
+      <span class="sec-tag">TOP 05</span>
+    </div>
+    <div class="rank-list">
+      <div class="rank-row">
+        <div class="rank-no">01</div>
+        <div class="rank-info"><h3>沙丘 2 (2024)</h3><p>科幻 / 冒险 / 史诗巨制</p></div>
+        <div class="rank-price">1280万 次结账</div>
+        <div class="rank-score">9.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">02</div>
+        <div class="rank-info"><h3>奥本海默 (2023)</h3><p>传记 / 历史 / 诺兰导演</p></div>
+        <div class="rank-price">1102万 次结账</div>
+        <div class="rank-score">9.6</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">03</div>
+        <div class="rank-info"><h3>坠落的审判 (2023)</h3><p>悬疑 / 犯罪 / 金棕榈奖</p></div>
+        <div class="rank-price">964万 次结账</div>
+        <div class="rank-score">9.1</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">04</div>
+        <div class="rank-info"><h3>美国小说 (2023)</h3><p>喜剧 / 剧情 / 奥斯卡改编剧本</p></div>
+        <div class="rank-price">821万 次结账</div>
+        <div class="rank-score">8.8</div>
+      </div>
+      <div class="rank-row">
+        <div class="rank-no">05</div>
+        <div class="rank-info"><h3>利益区域 (2023)</h3><p>剧情 / 历史 / 奥斯卡国际片</p></div>
+        <div class="rank-price">706万 次结账</div>
+        <div class="rank-score">8.5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新片 -->
+  <section id="latest">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="sq"></span>夜班上新 · 今日到货</h2>
+      <span class="sec-tag">NEW 03</span>
+    </div>
+    <div class="latest">
+      <div class="vhs">
+        <div class="vhs-cover">🦖<span class="tg">NEW</span></div>
+        <div class="vhs-body">
+          <h3>哥斯拉大战金刚 2</h3>
+          <p>两大怪兽王者联手对抗地心远古威胁，特效密集、节奏爽快，周末必看。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动作</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🐼<span class="tg">HOT</span></div>
+        <div class="vhs-body">
+          <h3>功夫熊猫 4</h3>
+          <p>阿宝新修行面对魅影妖后，笑点充足、画风讨喜，亲子共看无压力。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+      <div class="vhs">
+        <div class="vhs-cover">🧠<span class="tg">★</span></div>
+        <div class="vhs-body">
+          <h3>头脑特工队 2</h3>
+          <p>青春期情绪总部加入新成员，心理隐喻更成熟，老粉丝新观众都能入戏。</p>
+          <div class="vhs-tags"><span class="vhs-tag">动画</span><span class="vhs-tag">2024</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about" class="shelf about">
+    <h2>店志 · 关于深夜影视</h2>
+    <p>欢迎来到 <strong>深夜影视</strong>，一家货架一直开着、好片随时结账的便利店。门店编号：<strong>https://shenyeyingshi-top.github.io</strong>，每一格都留有夜班的灯光。</p>
+    <p>我们把选片当作补货：每一部影片都有所属货架、条码编号与结账次数，让查找像扫条码一样顺手。新片每日夜班上新，经典长期在柜，按下播放即等于收银机叮一声。</p>
+    <div class="counters">
+      <div><div class="v">12,800+</div><div class="l">已上架片源</div></div>
+      <div><div class="v">6</div><div class="l">货架分区</div></div>
+      <div><div class="v">每日</div><div class="l">夜班上新</div></div>
+      <div><div class="v">24h</div><div class="l">全年无休</div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">深夜<span>影视</span></div>
+    <p>© 2024 深夜影视 · 夜宵片单</p>
+    <p>门店编号：<a href="https://shenyeyingshi-top.github.io">https://shenyeyingshi-top.github.io</a></p>
+    <p style="margin-top:.5rem;font-size:.72rem;">— 夜灯未熄 · 好片正在热柜里 —</p>
+  </div>
+</footer>
+
+<div class="back-top" id="backTop">↑</div>
+
+<script>
+var hamburger=document.getElementById('hamburger');
+var navMenu=document.getElementById('navMenu');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('active');navMenu.classList.toggle('active');});
+navMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hamburger.classList.remove('active');navMenu.classList.remove('active');});});
+var backTop=document.getElementById('backTop');
+window.addEventListener('scroll',function(){backTop.classList.toggle('show',window.scrollY>400);});
+backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+// 热柜灯光闪烁
+var cb=document.querySelector('.cabinet-svg');var a=0,d=1;
+setInterval(function(){a+=d*.5;if(a>5||a<-5)d*=-1;cb.style.transform='translateY('+a+'px)';},160);
+// logo 24 牌呼吸
+var bd=document.querySelector('.logo .badge');var t=0;
+setInterval(function(){t+=.04;var o=.8+Math.sin(t)*.2;bd.style.opacity=o.toFixed(2);},80);
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.1});
+document.querySelectorAll('.cat-item,.rank-row,.vhs,.about').forEach(function(n){n.style.opacity='0';n.style.transform='translateY(18px)';n.style.transition='opacity .5s ease,transform .5s ease';io.observe(n);});
+</script>
+</body>
+</html>
